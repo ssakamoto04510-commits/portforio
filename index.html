@@ -1,51 +1,161 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
+
+
 <body>
   <!-- ヘッダー -->
   <header>
-    <nav>
-      <h1 class="logo">My Portfolio</h1>
-      <ul class="nav-links">
+ <nav class="navbar">
+       <ul class="nav-links" id="nav-links">
         <li><a href="#works">Works</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+       <li><a href="#line">LINE画像</a></li>
+      <li><a href="#lp">LP</a></li>
+      <li><a href="#print">チラシ・冊子</a></li>
+      <li><a href="#insta">Instagram</a></li>
+    </ul>
+  </nav>
+   <!-- ハンバーガーアイコン -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+      <h1 class="logo">My Portfolio</h1>
     <div class="hero">
       <h2>Design × Creativity</h2>
       <p>Web・グラフィック制作の実績紹介</p>
     </div>
   </header>
 
-  <!-- 作品一覧 -->
-  <section id="works" class="portfolio">
-    <h2>Works</h2>
+<!-- 作品一覧 -->
+  
+<section id="works" class="portfolio">
+  <h2>Works</h2>
+
+  <!-- LINE画像 -->
+  <div class="category" id="line">
+    <h3>LINE画像</h3>
     <div class="grid">
       <div class="work">
-        <img src="images/line.jpg" alt="LINE配信用画像">
-        <p>LINE配信用画像</p>
+        <img src="images/line/line1.jpg" alt="LINE配信用画像" onclick="openModal(this)">
       </div>
       <div class="work">
-        <img src="images/lp.jpg" alt="ランディングページ">
-        <p>ランディングページ</p>
+        <img src="images/line/line2.jpg" alt="LINE配信用画像" onclick="openModal(this)">
       </div>
-      <div class="work">
-        <img src="images/booklet.jpg" alt="冊子デザイン">
-        <p>冊子デザイン</p>
+ <div class="work">
+        <img src="images/line/line3.jpg" alt="LINE配信用画像" onclick="openModal(this)">
       </div>
-      <div class="work">
-        <img src="images/flyer.jpg" alt="チラシデザイン">
-        <p>チラシデザイン</p>
+<div class="work">
+        <img src="images/line/line4.jpg" alt="LINE配信用画像" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/line/line5.jpg" alt="LINE配信用画像" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/line/line6.jpg" alt="LINE配信用画像" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/line/line7.jpg" alt="LINE配信用画像" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/line/line8.jpg" alt="LINE配信用画像" onclick="openModal(this)">
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- LP -->
+  <div class="category" id="lp">
+    <h3>ランディングページ</h3>
+    <div class="grid">
+      <div class="work">
+        <img src="images/lp/lp1.jpg" alt="ランディングページ" onclick="openModal(this)">
+      </div>
+      <div class="work">
+        <img src="images/lp2.jpg" alt="ランディングページ" onclick="openModal(this)">
+      </div>
+    </div>
+  </div>
+
+  <!-- チラシ・冊子 -->
+  <div class="category" id="print">
+    <h3>チラシ・冊子</h3>
+    <div class="grid">
+      <div class="work">
+        <img src="images/paper/chirashi1.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+      <div class="work">
+        <img src="images/paper/chirashi2.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+ <div class="work">
+        <img src="images/paper/chirashi3.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+ <div class="work">
+        <img src="images/paper/chirashi4.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+ <div class="work">
+        <img src="images/paper/chirashi5.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/paper/chirashi5.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/paper/chirashi5.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+<div class="work">
+        <img src="images/paper/chirashi5.jpg" alt="チラシデザイン" onclick="openModal(this)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Instagram -->
+  <div class="category" id="insta">
+    <h3>Instagram</h3>
+
+    <div class="grid">
+      <div class="work">
+        <img src="images/insta/insta1.jpg" alt="Instagram投稿" onclick="openModal(this)">
+      </div>
+      <div class="work">
+        <img src="images/insta/insta2.jpg" alt="Instagram投稿" onclick="openModal(this)">
+      </div>
+<div class="work-item">
+      <video controls muted playsinline>
+        <source src="images/insta/azukicha.mp4" type="video/mp4">
+        お使いのブラウザは動画に対応していません。
+      </video>
+    </div>
+    <div class="work-item">
+      <video controls muted playsinline>
+        <source src="images/insta/sobacha.mp4" type="video/mp4">
+        お使いのブラウザは動画に対応していません。
+      </video>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- モーダル（拡大表示用） -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img id="modal-img">
+  <p id="modal-caption"></p>
+</div>
+
 
   <!-- 自己紹介 -->
   <section id="about" class="about">
