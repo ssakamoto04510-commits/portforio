@@ -44,6 +44,7 @@ nav .logo {
 }
 
 .hero {
+  background: url('images/background_kakigoori.jpg') center/cover no-repeat;
   text-align: center;
   margin-bottom: 100px;
 }
