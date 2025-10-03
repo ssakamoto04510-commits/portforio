@@ -295,3 +295,7 @@ footer {
     width: 80%; /* スマホは大きめに */
   }
 }
+
+.contact{
+	align-items:center;
+}
