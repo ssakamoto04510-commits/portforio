@@ -78,12 +78,9 @@ header {
 
 /* ✅ スマホ用（〜768px） */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* 三本線を表示 */
-  }
-
+  /* メニューは非表示にして縦並び */
   .nav-links {
-    display: none;  /* デフォルト非表示 */
+    display: none !important; /* ← 強制的に非表示 */
     flex-direction: column;
     position: absolute;
     top: 60px;
@@ -94,14 +91,12 @@ header {
     border-radius: 8px;
   }
 
+  /* JSで .active がついたときだけ表示 */
   .nav-links.active {
-    display: flex;  /* 三本線クリックで表示 */
-  }
-
-  .nav-links li {
-    margin: 10px 0;
+    display: flex !important;
   }
 }
+
 
 /* --- 以下は既存のスタイルをそのまま --- */
 .hero {
