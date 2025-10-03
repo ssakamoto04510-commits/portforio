@@ -170,3 +170,24 @@ footer {
   from { opacity: 0; transform: translateY(20px);}
   to { opacity: 1; transform: translateY(0);}
 }
+
+
+/* 作品の枠を正方形にそろえる */
+.work {
+  position: relative;
+  aspect-ratio: 1 / 1;  /* 正方形にする */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* 画像を枠にフィットさせる */
+.work img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* はみ出したらトリミング */
+  transition: transform 0.3s;
+}
+
+.work img:hover {
+  transform: scale(1.05); /* ホバーで少し拡大 */
+}
