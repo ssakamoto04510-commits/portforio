@@ -191,3 +191,25 @@ footer {
 .work img:hover {
   transform: scale(1.05); /* ホバーで少し拡大 */
 }
+
+
+/* 動画も正方形の枠にフィットさせる */
+.work video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.about-images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.about-images img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+}
