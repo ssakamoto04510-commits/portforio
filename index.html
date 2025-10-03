@@ -190,21 +190,52 @@
     <p>&copy; 2025 My Portfolio</p>
   </footer>
 
-  <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
+ <script>
+// ==========================
+// ハンバーガーメニュー
+// ==========================
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 
-    // アイコンの切り替え（☰ ⇔ ✖）
-    if (menuToggle.textContent === "☰") {
-      menuToggle.textContent = "✖";
-    } else {
-      menuToggle.textContent = "☰";
+  // アイコンの切り替え（☰ ⇔ ✖）
+  if (menuToggle.textContent === "☰") {
+    menuToggle.textContent = "✖";
+  } else {
+    menuToggle.textContent = "☰";
+  }
+});
+
+// メニュー内のリンクを押したらメニューを閉じる
+const navLinksItems = document.querySelectorAll(".nav-links a");
+navLinksItems.forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active"); // メニューを閉じる
+    menuToggle.textContent = "☰";       // アイコンを戻す
+  });
+});
+
+
+// ==========================
+// スクロールアニメーション
+// ==========================
+document.addEventListener("scroll", () => {
+  const elements = document.querySelectorAll("section");
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
     }
   });
-// モーダル関連の要素を取得
+});
+
+
+// ==========================
+// モーダル関連
+// ==========================
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 const modalCaption = document.getElementById("modal-caption");
@@ -231,8 +262,8 @@ modal.addEventListener("click", function(e) {
     closeModal();
   }
 });
-
 </script>
+
 
 </body>
 </html>
