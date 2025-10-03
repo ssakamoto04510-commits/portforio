@@ -269,3 +269,29 @@ footer {
 .close:hover {
   color: #ffd700;
 }
+
+.about-images {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* 画像の間隔 */
+  flex-wrap: wrap; /* 幅が足りない場合は折り返す */
+  margin-bottom: 20px;
+}
+
+.about-images img {
+  width: 200px;   /* PCでのサイズ調整 */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* スマホでは縦並びにする */
+@media (max-width: 768px) {
+  .about-images {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-images img {
+    width: 80%;  /* スマホでは画面幅にフィット */
+  }
+}
