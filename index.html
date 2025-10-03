@@ -189,22 +189,24 @@
   <footer>
     <p>&copy; 2025 My Portfolio</p>
   </footer>
-
- <script>
+<script>
 // ==========================
 // ハンバーガーメニュー
 // ==========================
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
+const menuIcon = menuToggle.querySelector("i"); // ← アイコンを取得
 
 menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 
-  // アイコンの切り替え（☰ ⇔ ✖）
-  if (menuToggle.textContent === "☰") {
-    menuToggle.textContent = "✖";
+  // アイコンの切り替え（bars ⇔ xmark）
+  if (navLinks.classList.contains("active")) {
+    menuIcon.classList.remove("fa-bars");
+    menuIcon.classList.add("fa-xmark");
   } else {
-    menuToggle.textContent = "☰";
+    menuIcon.classList.remove("fa-xmark");
+    menuIcon.classList.add("fa-bars");
   }
 });
 
@@ -212,8 +214,9 @@ menuToggle.addEventListener("click", () => {
 const navLinksItems = document.querySelectorAll(".nav-links a");
 navLinksItems.forEach(link => {
   link.addEventListener("click", () => {
-    navLinks.classList.remove("active"); // メニューを閉じる
-    menuToggle.textContent = "☰";       // アイコンを戻す
+    navLinks.classList.remove("active");   // メニューを閉じる
+    menuIcon.classList.remove("fa-xmark"); // アイコンを三本線に戻す
+    menuIcon.classList.add("fa-bars");
   });
 });
 
@@ -263,6 +266,7 @@ modal.addEventListener("click", function(e) {
   }
 });
 </script>
+
 
 
 </body>
