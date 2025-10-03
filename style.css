@@ -201,19 +201,6 @@ footer {
   border-radius: 12px;
 }
 
-.about-images {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.about-images img {
-  max-width: 300px;
-  width: 100%;
-  border-radius: 10px;
-}
-
 
 .work img,
 .work video {
