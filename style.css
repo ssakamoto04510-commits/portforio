@@ -16,91 +16,133 @@ header {
   justify-content: space-between;
 }
 
-nav {
+/* ナビゲーションバー */
+.navbar {
+  background: #333;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
-  padding: 20px 50px;
+  align-items: center;
 }
 
-nav .logo {
+/* ロゴ */
+.logo {
   font-size: 1.5em;
   font-weight: 600;
+  color: white;
+  text-decoration: none;
 }
 
+/* リンク（初期は共通） */
 .nav-links {
   list-style: none;
-  display: flex;
-  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
+/* リンクスタイル */
 .nav-links a {
-  text-decoration: none;
   color: white;
-  transition: 0.3s;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
-
 .nav-links a:hover {
-  color: #ffd700;
+  background: #ffd700;
+  color: black;
 }
 
+/* ハンバーガーメニュー */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ✅ PC用（769px以上） */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex;  /* 横並び */
+    gap: 20px;
+  }
+}
+
+/* ✅ スマホ用（〜768px） */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* 三本線を表示 */
+  }
+
+  .nav-links {
+    display: none;  /* デフォルト非表示 */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #333;
+    width: 200px;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex;  /* 三本線クリックで表示 */
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+}
+
+/* --- 以下は既存のスタイルをそのまま --- */
 .hero {
   background: url('images/background_kakigoori.jpg') center/cover no-repeat;
   text-align: center;
   margin-bottom: 100px;
 }
-
 .hero h2 {
   font-size: 3em;
   animation: fadeIn 2s ease;
 }
-
 .hero p {
   font-size: 1.2em;
   margin-top: 10px;
 }
 
-/* セクション */
 section {
   padding: 60px 10%;
 }
-
 h2 {
   font-size: 2em;
   text-align: center;
   margin-bottom: 40px;
 }
 
-/* 作品ギャラリー */
-.portfolio .grid {
+/* ギャラリー */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 15px;
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 901px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-.portfolio img {
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-
-.portfolio img:hover {
-  transform: scale(1.05);
-}
-
-/* プロフィール */
-.about {
-  background: white;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* お問い合わせ */
-.contact {
-  text-align: center;
-}
-
+/* ボタン */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -110,7 +152,6 @@ h2 {
   text-decoration: none;
   transition: 0.3s;
 }
-
 .btn:hover {
   background: #ffd700;
   color: black;
@@ -128,267 +169,4 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px);}
   to { opacity: 1; transform: translateY(0);}
-}
-
-
-.portfolio .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.portfolio .work {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1; /* 正方形の枠を作る */
-  border-radius: 12px;
-}
-
-.portfolio .work img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 枠いっぱいに収めてトリミング */
-  transition: transform 0.3s;
-}
-
-.portfolio .work img:hover {
-  transform: scale(1.1);
-}
-
-/* モーダル全体 */
-.modal {
-  display: none; /* 最初は非表示 */
-  position: fixed;
-  z-index: 9999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
-  text-align: center;
-}
-
-/* 拡大画像 */
-.modal img {
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 12px;
-  animation: zoom 0.3s ease;
-}
-
-@keyframes zoom {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* 閉じるボタン */
-.modal .close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-/* キャプション */
-#modal-caption {
-  color: white;
-  margin-top: 15px;
-  font-size: 1.2em;
-}
-
-/* セクションごとの見出し */
-.category {
-  margin-bottom: 60px;
-}
-
-.category h3 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  border-left: 5px solid #333;
-  padding-left: 10px;
-}
-
-/* グリッド配置 */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.work {
-  position: relative;
-  aspect-ratio: 1 / 1; /* 正方形に揃える */
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.work img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.3s;
-}
-
-.work img:hover {
-  transform: scale(1.1);
-}
-
-
-.grid {
-  display: grid;
-  gap: 15px; /* 作品間の余白 */
-}
-
-/* スマホ (〜600px) → 2列 */
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* タブレット (601〜900px) → 3列 */
-@media (min-width: 601px) and (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* PC (901px〜) → 4列 */
-@media (min-width: 901px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* ナビゲーション全体 */
-.navbar {
-  background: #333;
-  padding: 10px 0;
-  text-align: center;
-  position: sticky; /* スクロールしても上に固定 */
-  top: 0;
-  z-index: 1000;
-}
-
-/* リストの横並び */
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.navbar li {
-  display: inline;
-}
-
-/* リンクのスタイル */
-.navbar a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.navbar a:hover {
-  background: #ffd700;
-  color: black;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* --- 共通 --- */
-.navbar {
-  background: #333;
-  padding: 10px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* リンクの横並び（PC用） */
-/* PC用（769px以上のときだけ横並びにする） */
-@media (min-width: 769px) {
-  .nav-links {
-    display: flex;
-    gap: 20px;
-  }
-}
-
-.nav-links li {
-  display: inline;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.nav-links a:hover {
-  background: #ffd700;
-  color: black;
-}
-
-.work-item video {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-/* ハンバーガーメニューアイコン */
-.menu-toggle {
-  display: none; /* PCでは非表示 */
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-}
-
-/* スマホ用レイアウト */
-@media (max-width: 768px) {
-  /* ハンバーガーを表示 */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* メニューは非表示にして縦並び */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;  /* ナビの高さ分下にずらす */
-    right: 20px;
-    background: #333;
-    width: 200px;
-    padding: 15px;
-    border-radius: 8px;
-  }
-
-  /* JSで .active がついたときだけ表示 */
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links li {
-    margin: 10px 0;
-  }
 }
