@@ -270,28 +270,41 @@ footer {
   color: #ffd700;
 }
 
+/* Aboutセクション */
+.about {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center; /* 見出しやテキストは中央寄せ */
+}
+
+/* 画像を横並び */
 .about-images {
   display: flex;
   justify-content: center;
-  gap: 20px; /* 画像の間隔 */
-  flex-wrap: wrap; /* 幅が足りない場合は折り返す */
+  align-items: flex-start;
+  gap: 20px;
   margin-bottom: 20px;
+  flex-wrap: nowrap; /* 横並び固定 */
 }
 
+/* 画像サイズ */
 .about-images img {
-  width: 200px;   /* PCでのサイズ調整 */
+  width: 200px;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
 }
 
-/* スマホでは縦並びにする */
+/* スマホでは縦並びに切り替え */
 @media (max-width: 768px) {
   .about-images {
     flex-direction: column;
     align-items: center;
   }
+
   .about-images img {
-    width: 80%;  /* スマホでは画面幅にフィット */
+    width: 80%;
   }
 }
