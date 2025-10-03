@@ -278,7 +278,7 @@ footer {
 
 /* 画像サイズ */
 .about-images img {
-  width: 200px;
+  width: 280px;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
