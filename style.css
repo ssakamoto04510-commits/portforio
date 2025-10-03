@@ -319,10 +319,12 @@ html {
 }
 
 /* リンクの横並び（PC用） */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+/* PC用（769px以上のときだけ横並びにする） */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
 }
 
 .nav-links li {
