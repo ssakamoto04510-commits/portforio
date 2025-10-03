@@ -1,4 +1,34 @@
-// スクロール時のアニメーション
+<script>
+// ==========================
+// ハンバーガーメニュー
+// ==========================
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+
+  // アイコンの切り替え（☰ ⇔ ✖）
+  if (menuToggle.textContent === "☰") {
+    menuToggle.textContent = "✖";
+  } else {
+    menuToggle.textContent = "☰";
+  }
+});
+
+// メニュー内のリンクを押したらメニューを閉じる
+const navLinksItems = document.querySelectorAll(".nav-links a");
+navLinksItems.forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");  // メニューを閉じる
+    menuToggle.textContent = "☰";        // アイコンを戻す
+  });
+});
+
+
+// ==========================
+// スクロールアニメーション
+// ==========================
 document.addEventListener("scroll", () => {
   const elements = document.querySelectorAll("section");
   elements.forEach(el => {
@@ -10,22 +40,10 @@ document.addEventListener("scroll", () => {
   });
 });
 
-function openModal(imgElement) {
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modal-img");
-  const caption = document.getElementById("modal-caption");
 
-  modal.style.display = "block";
-  modalImg.src = imgElement.src;
-  caption.textContent = imgElement.alt;
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-
-<script>
-// モーダル関連の要素を取得
+// ==========================
+// モーダル関連
+// ==========================
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 const modalCaption = document.getElementById("modal-caption");
