@@ -9,7 +9,7 @@ body {
 /* ヘッダー */
 header {
   height: 100vh;
-  background: url('images/background_kakigoori.JPG') center/cover no-repeat;
+  background: url('images/background_kakigoori2.JPG') center/cover no-repeat;
   color: white;
   display: flex;
   flex-direction: column;
