@@ -230,31 +230,23 @@ HTML・CSSを用いたサイト制作にも対応可能です。<br>
 // ==========================
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
-const menuIcon = menuToggle.querySelector("i"); // ← アイコンを取得
+const menuIcon = menuToggle.querySelector("i");
 
 menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("active");
-
-  // アイコンの切り替え（bars ⇔ xmark）
   if (navLinks.classList.contains("active")) {
-    menuIcon.classList.remove("fa-bars");
-    menuIcon.classList.add("fa-xmark");
+    menuIcon.classList.replace("fa-bars", "fa-xmark");
   } else {
-    menuIcon.classList.remove("fa-xmark");
-    menuIcon.classList.add("fa-bars");
+    menuIcon.classList.replace("fa-xmark", "fa-bars");
   }
 });
 
-// メニュー内のリンクを押したらメニューを閉じる
-const navLinksItems = document.querySelectorAll(".nav-links a");
-navLinksItems.forEach(link => {
+document.querySelectorAll(".nav-links a").forEach(link => {
   link.addEventListener("click", () => {
-    navLinks.classList.remove("active");   // メニューを閉じる
-    menuIcon.classList.remove("fa-xmark"); // アイコンを三本線に戻す
-    menuIcon.classList.add("fa-bars");
+    navLinks.classList.remove("active");
+    menuIcon.classList.replace("fa-xmark", "fa-bars");
   });
 });
-
 
 // ==========================
 // スクロールアニメーション
@@ -270,37 +262,52 @@ document.addEventListener("scroll", () => {
   });
 });
 
-
 // ==========================
-// モーダル関連
+// モーダル関連（ズーム対応）
 // ==========================
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 const modalCaption = document.getElementById("modal-caption");
 const closeBtn = document.querySelector(".close");
 
-// 画像クリック時にモーダルを開く
+let zoomLevel = 1;
+
+// 画像クリックでモーダルを開く
 function openModal(imgElement) {
-  modal.style.display = "block";              // モーダル表示
-  modalImg.src = imgElement.src;              // 画像を表示
-  modalCaption.textContent = imgElement.alt;  // altをキャプションに
+  modal.style.display = "block";
+  modalImg.src = imgElement.src;
+  modalCaption.textContent = imgElement.alt;
+  zoomLevel = 1;
+  modalImg.style.transform = "scale(1)";
 }
 
-// モーダルを閉じる
+// 閉じる関数
 function closeModal() {
   modal.style.display = "none";
+  zoomLevel = 1;
+  modalImg.style.transform = "scale(1)";
+  modalImg.classList.remove("zoomed");
 }
 
-// ✖ ボタンで閉じる
+// ✖ボタン
 closeBtn.addEventListener("click", closeModal);
 
 // 背景クリックでも閉じる
-modal.addEventListener("click", function(e) {
-  if (e.target === modal) { 
-    closeModal();
-  }
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeModal();
+});
+
+// ==== ホイール操作でズーム ====
+modal.addEventListener("wheel", e => {
+  e.preventDefault();
+  if (e.deltaY < 0) zoomLevel *= 1.1;  // 拡大
+  else zoomLevel /= 1.1;              // 縮小
+  zoomLevel = Math.min(Math.max(zoomLevel, 1), 5); // 1～5倍の間に制限
+  modalImg.style.transform = `scale(${zoomLevel})`;
+  modalImg.classList.toggle("zoomed", zoomLevel > 1);
 });
 </script>
+
 
 
 

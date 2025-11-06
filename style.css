@@ -213,16 +213,16 @@ footer {
 
 /* モーダル全体 */
 .modal {
-  display: none; /* デフォルト非表示 */
+  display: none;
   position: fixed;
   z-index: 2000;
-  padding-top: 60px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background: rgba(0,0,0,0.8);
+  overflow: auto; /* ← 追加：縦長画像スクロール可能に */
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px 0;
 }
 
 /* モーダル内の画像 */
@@ -230,9 +230,17 @@ footer {
   display: block;
   margin: auto;
   max-width: 90%;
-  max-height: 80vh;
+  max-height: none; /* ← 高さ制限を解除 */
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+  cursor: zoom-in;
+}
+
+/* ズーム時の見た目変更 */
+.modal img.zoomed {
+  cursor: zoom-out;
 }
 
 /* キャプション */
