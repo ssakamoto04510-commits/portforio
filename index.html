@@ -79,16 +79,16 @@
     <h3>ランディングページ</h3>
     <div class="grid">
 	<div class="work">
-        <img src="images/lp/lp1.jpg" alt="ランディングページ" onclick="openModal(this)">
+        <img src="images/lp/lp1.jpg" alt="ランディングページ" onclick="openModal(this)" class="zoomable">
       </div>
       <div class="work">
-        <img src="images/lp/lp2.jpg" alt="ランディングページ" onclick="openModal(this)">
+        <img src="images/lp/lp2.jpg" alt="ランディングページ" onclick="openModal(this)" class="zoomable">
       </div>
 	<div class="work">
-        <img src="images/lp/lp5.jpg" alt="ランディングページ" onclick="openModal(this)">
+        <img src="images/lp/lp5.jpg" alt="ランディングページ" onclick="openModal(this)" class="zoomable">
       </div>
 	<div class="work">
-        <img src="images/lp/lp4.jpg" alt="ランディングページ" onclick="openModal(this)">
+        <img src="images/lp/lp4.jpg" alt="ランディングページ" onclick="openModal(this)" class="zoomable">
       </div>
     </div>
   </div>
@@ -306,6 +306,15 @@ modal.addEventListener("wheel", e => {
   modalImg.style.transform = `scale(${zoomLevel})`;
   modalImg.classList.toggle("zoomed", zoomLevel > 1);
 });
+
+// クリックで拡大・縮小する画像処理
+document.querySelectorAll('.zoomable').forEach(img => {
+  img.addEventListener('click', () => {
+    img.classList.toggle('zoomed');
+  });
+});
+
+
 </script>
 
 
